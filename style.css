@@ -1,0 +1,35 @@
+body {
+  background-color: rgb(247, 247, 247);
+}
+#main-title {
+  color: #373737;
+  font-family: verdana;
+  font-size: 300%;
+  text-align: center;
+}
+#summary {
+  color: #373737;
+  font-family: cambria;
+  font-size: 100%;
+  text-align: center;
+}
+
+div.search-form {
+  margin: auto;
+  width: 20%;
+}
+
+#search {
+  margin: auto;
+  width: 50%;
+}
+
+#submit {
+  font-family: cambria;
+  width: 70%;
+}
+
+#artist-input {
+  font-family: cambria;
+  color: #373737;
+}
