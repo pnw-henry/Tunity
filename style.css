@@ -1,10 +1,10 @@
 body {
-  background-color: rgb(247, 247, 247);
+  background-color: #f7f7f7;
 }
-#main-title {
-  color: #373737;
+#title {
+  color: #455768;
   font-family: verdana;
-  font-size: 300%;
+  font-size: 400%;
   text-align: center;
 }
 #summary {
@@ -32,4 +32,21 @@ div.search-form {
 #artist-input {
   font-family: cambria;
   color: #373737;
+}
+
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+#lower-section {
+  display: block;
+  background-color: #455768;
+  border-style: solid;
+  border-width: medium;
+  border-radius: 20px;
+  border-color: #bbb;
+  color: #f7f7f7;
+  margin: auto;
+  width: auto;
+  padding: 10px;
 }
