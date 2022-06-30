@@ -5,25 +5,26 @@
     <title>Tunity</title>
   </head>
   <body>
-    <section>
-      <div class="upper-section">
-        <h1 id="main-title">Tunity</h1>
+    <section id="upper-section">
+      <div class="main">
+        <h1 id="title">Tunity</h1>
         <p id="summary">Search MusicBrainz For Music Albums</p>
         <div class="search-form">
-          <form id="search">
+          <form id="search" role="search">
             <input
               type="text"
               id="artist-input"
               name="artist"
-              value="Enter name..."
-            /><br />
+              value="Enter artist name..."
+            />
             <input type="submit" id="submit" value="Search" />
           </form>
         </div>
       </div>
+      <hr class="solid" />
     </section>
-    <section>
-      <div class="lower-section">
+    <section id="lower-section">
+      <div class="results">
         <h2 id="subtitle">Album Information</h2>
         <ul id="album-list">
           <li>Result</li>
