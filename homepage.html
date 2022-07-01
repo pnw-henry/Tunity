@@ -17,20 +17,21 @@
               id="artist-input"
               placeholder="Enter a name..."
             />
-            <input type="submit" id="submit" value="Search" />
+            <input
+              type="submit"
+              id="submit"
+              value="Search"
+              onclick="removeAll()"
+            />
           </form>
         </div>
       </div>
       <hr class="solid" />
     </section>
     <section id="lower-section">
-      <div class="results">
-        <h2 id="subtitle">Results</h2>
-        <ul id="album-list">
-          <li>Result</li>
-          <li>Result</li>
-          <li>Result</li>
-        </ul>
+      <div id="results" hidden>
+        <h2 id="results-heading">Possible matches...</h2>
+        <ul id="artist-list"></ul>
       </div>
     </section>
   </body>
