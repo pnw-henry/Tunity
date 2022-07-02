@@ -25,30 +25,9 @@ const init = () => {
             const results = document.getElementById("results-heading");
             results.innerText = "Sorry, nothing found.";
           } else {
-            const artistArray = [];
             for (const artist of data.artists) {
               console.log(artist);
-              if (artist.name) {
-                artistArray.push(`Name: ${artist.name}`);
-              } else {
-                artistArray.push("Name: N/A");
-              }
-              if (artist.area) {
-                artistArray.push(`Country: ${artist.area.name}`);
-              } else {
-                artistArray.push("Country: N/A");
-              }
-              if (artist.gender) {
-                artistArray.push(`Gender: ${artist.gender}`);
-              } else {
-                artistArray.push("Gender: N/A");
-              }
-
-              if (artist.tags) {
-                artistArray.push(`Tagged as: ${artist.tags[0].name}`);
-              } else {
-                artistArray.push("No tags found");
-              }
+              artistArray = createArray(artist);
               createLi(artistArray);
               artistArray.length = 0;
             }
@@ -68,6 +47,33 @@ function removeAll() {
   while (ul.firstChild) {
     ul.removeChild(ul.firstChild);
   }
+}
+
+function createArray(artist) {
+  const artistArray = [];
+
+  if (artist.name) {
+    artistArray.push(`Name: ${artist.name}`);
+  } else {
+    artistArray.push("Name: N/A");
+  }
+  if (artist.area) {
+    artistArray.push(`Country: ${artist.area.name}`);
+  } else {
+    artistArray.push("Country: N/A");
+  }
+  if (artist.gender) {
+    artistArray.push(`Gender: ${artist.gender}`);
+  } else {
+    artistArray.push("Gender: N/A");
+  }
+
+  if (artist.tags) {
+    artistArray.push(`Tagged as: ${artist.tags[0].name}`);
+  } else {
+    artistArray.push("No tags found");
+  }
+  return artistArray;
 }
 
 function createLi(artistArray) {
