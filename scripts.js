@@ -79,10 +79,11 @@ function createArray(artist) {
 function createLi(artistArray) {
   const artistList = document.getElementById("artist-names");
   const li = document.createElement("li");
+  const br = document.createElement("br");
   const artistInfo = artistArray.join(" || ");
   li.className = "artist-entry";
   li.innerText = artistInfo;
-  artistList.appendChild(li);
+  artistList.append(li, br);
 }
 
 document.addEventListener("DOMContentLoaded", init);
