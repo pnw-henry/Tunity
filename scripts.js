@@ -26,9 +26,11 @@ const init = () => {
           } else {
             for (const artist of data.artists) {
               console.log(artist);
-              artistArray = createArray(artist);
-              createLi(artistArray);
+              const artistArray = createArray(artist);
+              const artistEntry = createLi(artistArray);
               artistArray.length = 0;
+
+              artistEntry.addEventListener("click", () => {});
             }
           }
         })
@@ -72,6 +74,7 @@ function createArray(artist) {
   } else {
     artistArray.push("No tags found");
   }
+
   return artistArray;
 }
 
@@ -83,6 +86,10 @@ function createLi(artistArray) {
   li.className = "artist-entry";
   li.innerText = artistInfo;
   artistList.append(li, br);
+
+  return li;
 }
+
+function artistEventListener(artist) {}
 
 document.addEventListener("DOMContentLoaded", init);
