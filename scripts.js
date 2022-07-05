@@ -27,8 +27,8 @@ const init = () => {
           } else {
             for (const artist of data.artists) {
               console.log(artist);
-              const artistArray = createArray(artist);
-              const artistEntry = createLi(artistArray);
+              const artistArray = createArtistArray(artist);
+              const artistEntry = createArtistLi(artistArray);
               artistArray.length = 0;
 
               artistEntry.addEventListener("click", () => {
@@ -43,38 +43,21 @@ const init = () => {
                 )
                   .then((response) => response.json())
                   .then((data) => {
+                    console.log(data);
+
                     document.getElementById("results-artist").hidden = true;
                     document.getElementById("results-album").hidden = false;
                     const albumHeading = document.getElementById("albums");
                     albumHeading.innerText = `Albums from ${artist.name}`;
 
-                    console.log(data);
                     for (const album of data.releases) {
                       if ((album.country = "US")) {
                         albumHeading.innerText = `Albums from ${artist.name}`;
-                        const albumArray = [];
-
-                        if (album.title) {
-                          albumArray.push(`Title: ${album.title}`);
-                        }
-
-                        if (album.date) {
-                          albumArray.push(`Date ${album.date}`);
-                        } else {
-                          albumArray.push("Date: N/A");
-                        }
-                        const albumInfo = albumArray.join(" || ");
-                        const albumList =
-                          document.getElementById("album-names");
-                        const li = document.createElement("li");
-                        const br = document.createElement("br");
-                        li.className = "album-entry";
-                        li.innerText = albumInfo;
-                        albumList.append(li, br);
+                        albumArray = createAlbumArray(album);
+                        createAlbumLi(albumArray);
                       }
                     }
                   });
-                console.log(artistID);
               });
             }
           }
@@ -95,7 +78,7 @@ function removeAll() {
   }
 }
 
-function createArray(artist) {
+function createArtistArray(artist) {
   const artistArray = [];
 
   if (artist.name) {
@@ -123,7 +106,7 @@ function createArray(artist) {
   return artistArray;
 }
 
-function createLi(artistArray) {
+function createArtistLi(artistArray) {
   const artistList = document.getElementById("artist-names");
   const li = document.createElement("li");
   const br = document.createElement("br");
@@ -133,6 +116,38 @@ function createLi(artistArray) {
   artistList.append(li, br);
 
   return li;
+}
+
+function createAlbumArray(album) {
+  const albumArray = [];
+
+  if (album.title) {
+    albumArray.push(`Title: ${album.title}`);
+  }
+
+  if (album.date) {
+    albumArray.push(`Date ${album.date}`);
+  } else {
+    albumArray.push("Date: N/A");
+  }
+
+  if (album.country) {
+    albumArray.push(`Country: ${album.country}`);
+  } else {
+    albumArray.push("Country: N/A");
+  }
+
+  return albumArray;
+}
+
+function createAlbumLi(albumArray) {
+  const albumInfo = albumArray.join(" || ");
+  const albumList = document.getElementById("album-names");
+  const li = document.createElement("li");
+  const br = document.createElement("br");
+  li.className = "album-entry";
+  li.innerText = albumInfo;
+  albumList.append(li, br);
 }
 
 function artistEventListener(artist) {}
