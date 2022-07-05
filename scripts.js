@@ -1,6 +1,5 @@
 const init = () => {
   const searchForm = document.getElementById("search");
-  const submitButton = document.getElementById("submit");
 
   let headers = new Headers({
     "Content-Type": "application/json",
@@ -12,10 +11,10 @@ const init = () => {
     e.preventDefault();
 
     const inputText = document.getElementById("artist-input").value;
-    document.getElementById("results").hidden = false;
+    document.getElementById("results-artist").hidden = false;
 
     if (inputText.length > 2) {
-      fetch(`http://musicbrainz.org/ws/2/artist/?query=artist:${inputText}`, {
+      fetch(`http://musicbrainz.org/ws/2/artist/?query=artist:"${inputText}"`, {
         method: "GET",
         headers: headers,
       })
