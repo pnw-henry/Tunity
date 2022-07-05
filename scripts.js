@@ -111,6 +111,7 @@ function createArtistLi(artistArray) {
   const li = document.createElement("li");
   const br = document.createElement("br");
   const artistInfo = artistArray.join(" || ");
+
   li.className = "artist-entry";
   li.innerText = artistInfo;
   artistList.append(li, br);
@@ -145,6 +146,7 @@ function createAlbumLi(albumArray) {
   const albumList = document.getElementById("album-names");
   const li = document.createElement("li");
   const br = document.createElement("br");
+
   li.className = "album-entry";
   li.innerText = albumInfo;
   albumList.append(li, br);
