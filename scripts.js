@@ -12,6 +12,7 @@ const init = () => {
 
     const inputText = document.getElementById("artist-input").value;
     document.getElementById("results-artist").hidden = false;
+    document.getElementById("results-album").hidden = true;
 
     if (inputText.length > 2) {
       fetch(`http://musicbrainz.org/ws/2/artist/?query=artist:"${inputText}"`, {
@@ -30,7 +31,51 @@ const init = () => {
               const artistEntry = createLi(artistArray);
               artistArray.length = 0;
 
-              artistEntry.addEventListener("click", () => {});
+              artistEntry.addEventListener("click", () => {
+                const artistID = artist.id;
+
+                fetch(
+                  `http://musicbrainz.org/ws/2/release?artist=${artistID}&status=official&type=album`,
+                  {
+                    method: "GET",
+                    headers: headers,
+                  }
+                )
+                  .then((response) => response.json())
+                  .then((data) => {
+                    document.getElementById("results-artist").hidden = true;
+                    document.getElementById("results-album").hidden = false;
+                    const albumHeading = document.getElementById("albums");
+                    albumHeading.innerText = `Albums from ${artist.name}`;
+
+                    console.log(data);
+                    for (const album of data.releases) {
+                      if ((album.country = "US")) {
+                        albumHeading.innerText = `Albums from ${artist.name}`;
+                        const albumArray = [];
+
+                        if (album.title) {
+                          albumArray.push(`Title: ${album.title}`);
+                        }
+
+                        if (album.date) {
+                          albumArray.push(`Date ${album.date}`);
+                        } else {
+                          albumArray.push("Date: N/A");
+                        }
+                        const albumInfo = albumArray.join(" || ");
+                        const albumList =
+                          document.getElementById("album-names");
+                        const li = document.createElement("li");
+                        const br = document.createElement("br");
+                        li.className = "album-entry";
+                        li.innerText = albumInfo;
+                        albumList.append(li, br);
+                      }
+                    }
+                  });
+                console.log(artistID);
+              });
             }
           }
         })
