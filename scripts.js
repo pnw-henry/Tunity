@@ -6,7 +6,7 @@ const init = () => {
   let headers = new Headers({
     "Content-Type": "application/json",
     Accept: "application/json",
-    "User-Agent": "Tunity/0.1 (henrye@gmail.com)",
+    "User-Agent": "Voiceseek/0.1 (henrye@gmail.com)",
   });
 
   searchForm.addEventListener("submit", (e) => {
