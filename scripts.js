@@ -35,7 +35,7 @@ const init = () => {
                 const artistID = artist.id;
 
                 fetch(
-                  `http://musicbrainz.org/ws/2/release-group?artist=${artistID}&type=album`,
+                  `http://musicbrainz.org/ws/2/release-group?artist=${artistID}&type=album&limit=50`,
                   {
                     method: "GET",
                     headers: headers,
@@ -48,11 +48,12 @@ const init = () => {
                     document.getElementById("results-artist").hidden = true;
                     document.getElementById("results-album").hidden = false;
                     const albumHeading = document.getElementById("albums");
+                    albumHeading.innerText = `Album releases from ${artist.name}`;
 
                     for (const album of data["release-groups"]) {
-                      albumHeading.innerText = `Album releases from ${artist.name}`;
-                      albumArray = createAlbumArray(album);
+                      const albumArray = createAlbumArray(album);
                       createAlbumLi(albumArray);
+                      albumArray.length = 0;
                     }
                   });
               });
