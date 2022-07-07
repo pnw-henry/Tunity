@@ -29,7 +29,6 @@ const init = () => {
             results.innerText = "Sorry, nothing found.";
           } else {
             for (const artist of data.artists) {
-              console.log(artist);
               const artistArray = createArtistArray(artist);
               const artistEntry = createArtistLi(artistArray);
               artistArray.length = 0;
@@ -46,8 +45,6 @@ const init = () => {
                 )
                   .then((response) => response.json())
                   .then((data) => {
-                    console.log(data);
-
                     artistResults.hidden = true;
                     albumResults.hidden = false;
                     const albumHeading = document.getElementById("albums");
@@ -115,7 +112,7 @@ function createArtistLi(artistArray) {
   const br = document.createElement("br");
   const artistInfo = artistArray.join(" || ");
 
-  li.className = "display-item";
+  li.className = "artist-entry";
   li.innerText = artistInfo;
   artistList.append(li, br);
 
@@ -150,7 +147,7 @@ function createAlbumLi(albumArray) {
   const li = document.createElement("li");
   const br = document.createElement("br");
 
-  li.className = "display-item";
+  li.className = "album-entry";
   li.innerText = albumInfo;
   albumList.append(li, br);
 }
