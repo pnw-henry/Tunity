@@ -35,7 +35,7 @@ const init = () => {
                 const artistID = artist.id;
 
                 fetch(
-                  `http://musicbrainz.org/ws/2/release?artist=${artistID}&status=official&type=album`,
+                  `http://musicbrainz.org/ws/2/release-group?artist=${artistID}&type=album`,
                   {
                     method: "GET",
                     headers: headers,
@@ -50,12 +50,11 @@ const init = () => {
                     const albumHeading = document.getElementById("albums");
                     albumHeading.innerText = `Albums from ${artist.name}`;
 
-                    for (const album of data.releases) {
-                      if ((album.country = "US")) {
-                        albumHeading.innerText = `Albums from ${artist.name}`;
-                        albumArray = createAlbumArray(album);
-                        createAlbumLi(albumArray);
-                      }
+                    for (const album of data["release-groups"]) {
+                      
+                      albumHeading.innerText = `Albums from ${artist.name}`;
+                      albumArray = createAlbumArray(album);
+                      createAlbumLi(albumArray);
                     }
                   });
               });
@@ -126,16 +125,16 @@ function createAlbumArray(album) {
     albumArray.push(`Title: ${album.title}`);
   }
 
-  if (album.date) {
-    albumArray.push(`Date ${album.date}`);
+  if (album["first-release-date"]) {
+    albumArray.push(`Date ${album["first-release-date"]}`);
   } else {
     albumArray.push("Date: N/A");
   }
 
-  if (album.country) {
-    albumArray.push(`Country: ${album.country}`);
+  if (album["primary-type"]) {
+    albumArray.push(`Type: ${album["primary-type"]}`);
   } else {
-    albumArray.push("Country: N/A");
+    albumArray.push("Type: N/A");
   }
 
   return albumArray;
