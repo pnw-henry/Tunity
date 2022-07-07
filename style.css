@@ -3,12 +3,14 @@ body {
 }
 #title {
   color: #455768;
+  cursor: default;
   font-family: verdana;
   font-size: 400%;
   text-align: center;
 }
 #summary {
   color: #373737;
+  cursor: default;
   font-family: cambria;
   font-size: 100%;
   text-align: center;
