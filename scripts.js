@@ -48,7 +48,7 @@ const init = () => {
                     artistResults.hidden = true;
                     albumResults.hidden = false;
                     const albumHeading = document.getElementById("albums");
-                    albumHeading.innerText = `Album releases from ${artist.name}`;
+                    albumHeading.innerText = `Album Releases From ${artist.name}`;
 
                     for (const album of data["release-groups"]) {
                       const albumArray = createAlbumArray(album);
