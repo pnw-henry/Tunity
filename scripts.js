@@ -11,6 +11,7 @@ const init = () => {
 
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    removeAll();
 
     const inputText = document.getElementById("artist-input").value;
     artistResults.hidden = false;
@@ -72,9 +73,11 @@ const init = () => {
 };
 
 function removeAll() {
-  const ul = document.getElementById("artist-names");
-  while (ul.firstChild) {
-    ul.removeChild(ul.firstChild);
+  const ulArray = document.querySelectorAll("ul");
+  for (const ul of ulArray) {
+    while (ul.firstChild) {
+      ul.removeChild(ul.firstChild);
+    }
   }
 }
 
@@ -151,7 +154,5 @@ function createAlbumLi(albumArray) {
   li.innerText = albumInfo;
   albumList.append(li, br);
 }
-
-function artistEventListener(artist) {}
 
 document.addEventListener("DOMContentLoaded", init);
