@@ -1,5 +1,7 @@
 const init = () => {
   const searchForm = document.getElementById("search");
+  const artistResults = document.getElementById("results-artist");
+  const albumResults = document.getElementById("results-album");
 
   let headers = new Headers({
     "Content-Type": "application/json",
@@ -11,8 +13,8 @@ const init = () => {
     e.preventDefault();
 
     const inputText = document.getElementById("artist-input").value;
-    document.getElementById("results-artist").hidden = false;
-    document.getElementById("results-album").hidden = true;
+    artistResults.hidden = false;
+    albumResults.hidden = true;
 
     if (inputText.length > 2) {
       fetch(`http://musicbrainz.org/ws/2/artist/?query=artist:"${inputText}"`, {
@@ -45,8 +47,8 @@ const init = () => {
                   .then((data) => {
                     console.log(data);
 
-                    document.getElementById("results-artist").hidden = true;
-                    document.getElementById("results-album").hidden = false;
+                    artistResults.hidden = true;
+                    albumResults.hidden = false;
                     const albumHeading = document.getElementById("albums");
                     albumHeading.innerText = `Album releases from ${artist.name}`;
 
