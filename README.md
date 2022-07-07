@@ -32,3 +32,4 @@ Pulls requests are welcome.
 
 ## License
 
+GPL-3.0
