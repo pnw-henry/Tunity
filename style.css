@@ -26,7 +26,7 @@ div.search-form {
 
 #submit {
   font-family: cambria;
-  width: 70%;
+  width: 98%;
 }
 
 #artist-input {
@@ -35,7 +35,9 @@ div.search-form {
 }
 
 hr.solid {
-  border-top: 3px solid #bbb;
+  width: auto;
+  height: 30px;
+  border: #373737;
 }
 
 #lower-section {
@@ -49,4 +51,12 @@ hr.solid {
   margin: auto;
   width: auto;
   padding: 10px;
+}
+
+li.artist-entry {
+  cursor: pointer;
+}
+
+li.album-entry {
+  cursor: default;
 }
