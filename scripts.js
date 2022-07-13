@@ -132,12 +132,6 @@ function createAlbumArray(album) {
     albumArray.push("Date: N/A");
   }
 
-  if (album["primary-type"]) {
-    albumArray.push(`Type: ${album["primary-type"]}`);
-  } else {
-    albumArray.push("Type: N/A");
-  }
-
   return albumArray;
 }
 
