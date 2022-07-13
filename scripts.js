@@ -24,10 +24,11 @@ const init = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          const results = document.getElementById("results-heading");
           if (data.artists.length === 0) {
-            const results = document.getElementById("results-heading");
             results.innerText = "Sorry, nothing found.";
           } else {
+            results.innerText = "Possible Matches...";
             for (const artist of data.artists) {
               const artistArray = createArtistArray(artist);
               const artistEntry = createArtistLi(artistArray);
