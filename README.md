@@ -16,7 +16,7 @@ No API key or virtual server required.
 
 Type in the name of a music artist in the search box, click the search button to find possible matches. If there's a match, select it, and a list of albums from that artist will be shown.
 
-##Roadmap
+## Roadmap
 
 Implement the ability to sort results.
 Add album art to albums. 
