@@ -31,7 +31,7 @@ const init = () => {
             results.innerText = "Possible Matches...";
             for (const artist of data.artists) {
               const artistArray = createArtistArray(artist);
-              const artistEntry = createArtistLi(artistArray);
+              const artistEntry = artistLiAppend(artistArray);
               artistArray.length = 0;
 
               artistEntry.addEventListener("click", () => {
@@ -51,11 +51,10 @@ const init = () => {
                     const albumHeading = document.getElementById("albums");
                     albumHeading.innerText = `Album Releases From ${artist.name}`;
 
-                    for (const album of data["release-groups"]) {
+                    data["release-groups"].forEach((album) => {
                       const albumArray = createAlbumArray(album);
-                      createAlbumLi(albumArray);
-                      albumArray.length = 0;
-                    }
+                      albumLiAppend(albumArray);
+                    });
                   });
               });
             }
@@ -107,7 +106,7 @@ function createArtistArray(artist) {
   return artistArray;
 }
 
-function createArtistLi(artistArray) {
+function artistLiAppend(artistArray) {
   const artistList = document.getElementById("artist-names");
   const li = document.createElement("li");
   const br = document.createElement("br");
@@ -136,7 +135,7 @@ function createAlbumArray(album) {
   return albumArray;
 }
 
-function createAlbumLi(albumArray) {
+function albumLiAppend(albumArray) {
   const albumInfo = albumArray.join(" || ");
   const albumList = document.getElementById("album-names");
   const li = document.createElement("li");
